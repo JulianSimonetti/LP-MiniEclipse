@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="fenetreNouvClasse" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="818.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx" fx:controller="org.formation.eeos.minieclipse.view.CreationClasseController" xmlns:fx="http://javafx.com/fxml">
+   <children>
+      <Separator layoutY="98.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Créer une Classe Java" wrappingWidth="255.626953125" AnchorPane.bottomAnchor="709.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="330.0" AnchorPane.topAnchor="27.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="12.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Crée une nouvelle classe Java" AnchorPane.leftAnchor="14.0" />
+      <TextField fx:id="txtDossierSource" layoutX="115.0" layoutY="117.0" prefHeight="25.0" prefWidth="352.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="133.0">
+         <tooltip>
+            <Tooltip text="Le dossier de la source où sera créée la classe">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></TextField>
+      <Button fx:id="btnParcourirSource" layoutX="473.0" layoutY="117.0" mnemonicParsing="false" onAction="#btnParcourirSourceAction" prefHeight="25.0" prefWidth="112.0" text="Parcourir..." AnchorPane.rightAnchor="15.0" />
+      <TextField fx:id="txtNomPackage" layoutX="115.0" layoutY="154.0" prefHeight="25.0" prefWidth="352.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="133.0">
+         <tooltip>
+            <Tooltip text="Le package qui contiendra la classe">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></TextField>
+      <Button fx:id="btnParcourirPackage" layoutX="473.0" layoutY="154.0" mnemonicParsing="false" onAction="#btnParcourirPackageAction" prefHeight="25.0" prefWidth="112.0" text="Parcourir..." AnchorPane.rightAnchor="15.0" />
+      <TextField fx:id="txtNom" layoutX="119.0" layoutY="227.0" minHeight="30.0" minWidth="300.0" prefHeight="30.0" prefWidth="352.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="133.0">
+         <tooltip>
+            <Tooltip text="Le nom de la nouvelle classe (commence par une lettre capitale)">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></TextField>
+      <RadioButton fx:id="radioPublic" layoutX="119.0" layoutY="278.0" mnemonicParsing="false" selected="true" text="public" AnchorPane.leftAnchor="119.0">
+         <toggleGroup>
+            <ToggleGroup fx:id="radioVisibilite" />
+         </toggleGroup>
+         <tooltip>
+            <Tooltip text="Visibilité publique : accessible de partout">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip>
+      </RadioButton>
+      <RadioButton fx:id="radioPrivate" layoutX="205.0" layoutY="278.0" mnemonicParsing="false" text="private" toggleGroup="$radioVisibilite" AnchorPane.leftAnchor="205.0">
+         <tooltip>
+            <Tooltip text="Visibilité privée : visible uniquement depuis sa propre portée">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></RadioButton>
+      <RadioButton fx:id="radioProtected" layoutX="300.0" layoutY="278.0" mnemonicParsing="false" text="protected" toggleGroup="$radioVisibilite" AnchorPane.leftAnchor="300.0">
+         <tooltip>
+            <Tooltip text="Visibilité protégée : visible uniquement depuis sa portée ainsi que les classes qui en héritent">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></RadioButton>
+      <RadioButton fx:id="radioPackage" layoutX="401.0" layoutY="278.0" mnemonicParsing="false" text="package" toggleGroup="$radioVisibilite" AnchorPane.leftAnchor="401.0">
+         <tooltip>
+            <Tooltip text="Visiblité package : visibilité par défaut, restreinte au package">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></RadioButton>
+      <CheckBox fx:id="checkAbstract" layoutX="119.0" layoutY="312.0" mnemonicParsing="false" text="abstract" AnchorPane.leftAnchor="119.0">
+         <tooltip>
+            <Tooltip text="Abstrait : l'instanciation directe n'est pas permise">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></CheckBox>
+      <CheckBox fx:id="checkFinal" layoutX="205.0" layoutY="312.0" mnemonicParsing="false" text="final" AnchorPane.leftAnchor="205.0">
+         <tooltip>
+            <Tooltip text="Final : la redéfinition/l'héritage ne sont pas permis">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></CheckBox>
+      <CheckBox fx:id="checkStatic" layoutX="276.0" layoutY="312.0" mnemonicParsing="false" text="static" AnchorPane.leftAnchor="276.0">
+         <tooltip>
+            <Tooltip text="Statique : ne nécessite pas d'instanciation (non applicable aux classes)">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></CheckBox>
+      <TextField fx:id="txtSuperclasse" layoutX="115.0" layoutY="356.0" prefHeight="25.0" prefWidth="352.0" text="java.lang.Object" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="133.0">
+         <tooltip>
+            <Tooltip text="La superclasse de la nouvelle classe. Object est la superclasse par défaut">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></TextField>
+      <Button fx:id="btnParcourirSuperclasse" layoutX="473.0" layoutY="356.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="112.0" text="Parcourir..." AnchorPane.rightAnchor="15.0" />
+      <ListView fx:id="listInterfaces" layoutX="115.0" layoutY="396.0" prefHeight="126.0" prefWidth="352.0" style="-fx-background-color: white; -fx-border-color: lightgrey;" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="133.0">
+         <tooltip>
+            <Tooltip text="Interfaces que la nouvelle classe implémentera">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></ListView>
+      <Button fx:id="btnAjouterInterface" layoutX="473.0" layoutY="396.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="112.0" text="Ajouter..." AnchorPane.rightAnchor="15.0" />
+      <Button fx:id="brnRetirerInterface" disable="true" layoutX="473.0" layoutY="427.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="112.0" text="Retirer" AnchorPane.rightAnchor="15.0" />
+      <Text layoutX="22.0" layoutY="548.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Déclarations à générer :" AnchorPane.leftAnchor="16.0" />
+      <CheckBox fx:id="checkMain" layoutX="115.0" layoutY="558.0" mnemonicParsing="false" text="public static void main(String[] args)" AnchorPane.leftAnchor="115.0">
+         <tooltip>
+            <Tooltip text="Génère une méthode dite &quot;main&quot; ou point d'entrée de l'application">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></CheckBox>
+      <CheckBox fx:id="checkConstructeurs" layoutX="115.0" layoutY="582.0" mnemonicParsing="false" text="Constructeurs de la superclasse" AnchorPane.leftAnchor="115.0">
+         <tooltip>
+            <Tooltip text="Déclare tous les constructeurs corespondants à ceux de la superclasse">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></CheckBox>
+      <CheckBox fx:id="checkMethAbstraites" layoutX="115.0" layoutY="605.0" mnemonicParsing="false" selected="true" text="Méthodes abstraites héritées" AnchorPane.leftAnchor="115.0">
+         <tooltip>
+            <Tooltip text="Redéfinit automatiquement les méthodes qui sont abstraites dans la superclasse (obligatoire à un moment ou un autre)">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></CheckBox>
+      <Text layoutX="16.0" layoutY="653.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autres options :" AnchorPane.leftAnchor="16.0" />
+      <CheckBox fx:id="checkCommentaires" layoutX="113.0" layoutY="665.0" mnemonicParsing="false" text="Générer les commentaires" AnchorPane.leftAnchor="115.0">
+         <tooltip>
+            <Tooltip text="Génère les commentaires de base pour la classe et les méthodes générées">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></CheckBox>
+      <Text layoutX="14.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom  : " AnchorPane.leftAnchor="16.0" />
+      <Separator layoutX="4.0" layoutY="202.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Separator layoutY="746.0" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Button fx:id="btnCreer" defaultButton="true" layoutX="409.0" layoutY="768.0" mnemonicParsing="false" onAction="#createClassBtn" prefHeight="17.0" prefWidth="81.0" text="Créer" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="110.0" />
+      <Button fx:id="btnAnnuler" cancelButton="true" layoutX="505.0" layoutY="768.0" mnemonicParsing="false" onAction="#cancelBtn" prefHeight="17.0" prefWidth="81.0" text="Annuler" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="14.0" />
+      <Label layoutX="16.0" layoutY="121.0" text="Dossier source :" AnchorPane.leftAnchor="16.0" />
+      <Label layoutX="16.0" layoutY="158.0" text="Package :" AnchorPane.leftAnchor="16.0" />
+      <Text layoutX="14.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modificateurs  : " AnchorPane.leftAnchor="16.0" />
+      <Text layoutX="16.0" layoutY="373.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Superclasse  : " AnchorPane.leftAnchor="16.0" />
+      <Text layoutX="21.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Interfaces : " wrappingWidth="64.0" AnchorPane.leftAnchor="16.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,107 @@
+@startuml candidates
+
+package Modèle {
+    class Fichier
+    note left of Fichier
+    Représentation d'un fichier. 
+    Agrège et contrôle les opérations telles que les accès fichiers,
+        leur création/suppression, leur modification,
+        et surtout leur intégration à l'application.
+
+    ==
+
+    A un chemin complet (répertoire + nom)
+    A un nom 
+    A un encodage
+    A un contenu
+    Est éditable OU readonly
+    Est capable de donner son Arborescence (simple)
+    Peut être lancé
+    endnote
+
+    class Dossier
+    note right of Dossier
+    Représentation d'un dossier.
+    Regroupe des sous-dossiers et fichiers et agrège les opérations sur les dossiers.
+
+    ==
+    
+    A un chemin complet (répertoire parent + nom)
+    A un nom
+    A un répertoire parent
+    Peut contenir des dossiers
+    Peut contenir des fichiers
+    Est capable de donner son Arborescence
+    endnote
+
+    class Projet
+    note left of Projet
+    Représentation d'un projet.
+    Regroupe l'ensemble des dossiers et fichiers d'un projet, 
+        défini par un nom et un dossier racine.
+    Classe permettant à l'appli de gérer plusieurs projets,
+        et pourquoi pas - si besoin - d'y mettre
+        les aspects communs à tous les fichiers d'un projet
+        (point d'entrée au lancement, auteur...)
+
+    ==
+
+    A un nom
+    A un répertoire racine (chemin complet)
+    Contient des Dossiers
+    Contient des Fichiers
+    Peut être lancé (se rappelle du fichier à lancer,
+        par exemple quelle est la classe main)
+    Reconnaissable par l'application (fichier détectable,
+        par exemple : ".minieclipse" à l'instar de ".project")
+    endnote
+
+    class Arborescence 
+    note right of Arborescence
+    "Noeud" ou "branche" d'une arborescence.
+
+    ==
+
+    Généré par un Dossier ou un Fichier
+    A un type (dossier, ou fichier = fin de branche)
+    Retourne de manière simplifiée et adaptée à la vue :
+        - son type
+        - les arborescences filles si dossier
+    endnote
+}
+
+package Contrôleur {    
+    class Workspace
+    note left of Workspace
+    Regroupement des projets actuellement en mémoire.
+
+    ==
+    
+    Responsable des projets (regroupe les objets Projet)
+    Intermédiaire pour leur affichage (tel un Zoo pour les Animaux,
+        sans être un contrôleur énorme pour autant)
+
+    ==
+
+    ? Pas forcément dans Contrôleur, peut être dans le modèle
+        selon comment on voit les choses
+    endnote
+}
+
+package Vue {
+	class Controller
+	note right of Controller
+	La vue FXML communiquera avec cette classe afin de modifier la vue principal par l'apport/la modification d'information
+	endnote
+}
+
+' IGNORER : Mise en page '
+Fichier -r[hidden]- Dossier
+Fichier -d[hidden]- Projet
+Projet -d[hidden]- Arborescence
+
+Projet -r[hidden]- Arborescence
+
+Modèle -d[hidden]- Contrôleur
+Projet -d[hidden]- Workspace
+@enduml

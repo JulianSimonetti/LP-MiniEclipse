@@ -1,0 +1,100 @@
+@startuml draft
+
+title Modèle "gestion de fichiers" du Mini Eclipse
+
+package Légende << Rectangle >> {
+    class "Interface regroupant des\n méthodes publiques" as leguti << (U, #aaffff) Utilitaire >>
+    class "Instance unique" as legsgt << (S, #ff00ff) Singleton >>
+    class "Dépendance, plugin, API" as legdep << (D,#ffffff) dépendance >> #ffffff
+    class "Simple idée" as legide << (?,#dddddd) draft >> #dddddd
+    leguti -d[hidden]- legsgt
+    legsgt -d[hidden]- legdep
+    legdep -d[hidden]- legide
+}
+
+interface Serializable
+
+class CLI << (?,#dddddd) draft >> #dddddd {
+    + exécuter(commande) ?
+}
+note right of CLI
+Aucune idée de comment on implémentera
+l'exécution et l'affichage de terminal :-/
+endnote
+
+abstract class Langage {
+    - nom
+    - extensions []
+    - exécutable
+    - paramètres
+}
+Serializable <|.. Langage : Sauvegarde des profils (XML ou JSON par exemple)
+note left of Langage
+Superclasse abstraite parce que pourquoi pas ?
+Mais si au final uniquement ProfilLangage en hérite
+on pourra les fusionner.
+endnote
+
+class ProfilLangage {
+    - nom dans la configuration
+    - extensions personnalisées [] 
+    + {static} nouveauProfil()
+    + {static} getProfil()
+    + sauvegarderProfil()
+    + supprimerProfil()
+    + copierProfil()
+    + exécuter(Fichier)
+}
+Langage <|- ProfilLangage
+CLI <.. ProfilLangage
+note right of ProfilLangage
+Des profils par défaut
+(1 par langage supporté d'usine)
+seront (re)générés si aucune configuration
+ou si reset demandé par l'utilisateur.
+
+nouveauProfil() et copierProfil() créent le profil
+dans la configuration, sans l'instancier.
+endnote
+
+class Fichier {
+    - chemin complet
+    - nom
+    - encodage
+    - contenu
+    - métadonnées ?
+    + {static} ouvrir(chemin) : Fichier
+    + refresh()
+    + {abstract} save()
+    # close()
+    + exécuter()
+}
+ProfilLangage <.. Fichier : Récupération du profil depuis la config (automatique selon l'extension, peut être override)
+note right of Fichier
+ouvrir() se comporte comme une factory pour Fichier
+(exactement comme getLogger() de java.util.logging.Logger
+c'est ouf ça nan ?)
+
+exécuter() accède au ProfilLangage
+FEditable et FReadonly : peut-être passer en state pattern ?
+Par exemple pour faciliter le codage du marqueur saved/not saved.
+
+Peut-être implémenter Serializable
+pour conserver les onglets laissés ouverts.
+endnote
+
+abstract class StateEdition {
+    + triggerModif()
+    + resetModif()
+    + estModifié() : boolean
+}
+Fichier *-l- StateEdition : - edition
+
+class FichierEditable
+StateEdition <|-- FichierEditable
+
+class FichierReadonly
+StateEdition <|-- FichierReadonly
+
+
+@enduml 

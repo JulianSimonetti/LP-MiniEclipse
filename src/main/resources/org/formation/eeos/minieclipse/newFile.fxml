@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="fenetreNouvFichier" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="679.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/" fx:controller="org.formation.eeos.minieclipse.view.FileCreationController">
+   <children>
+      <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Créer un fichier" wrappingWidth="300.626953125" AnchorPane.bottomAnchor="709.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="285.0" AnchorPane.topAnchor="27.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="14.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Crée un nouveau fichier libre à un emplacement donné" />
+      <Separator layoutY="98.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Separator layoutY="600.0" AnchorPane.bottomAnchor="76.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <TextField fx:id="txtParent" layoutX="14.0" layoutY="141.0" prefHeight="25.0" prefWidth="573.0" promptText="Veuillez sélectionner un dossier parent..." AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0">
+         <tooltip>
+            <Tooltip text="Le chemin du dossier qui contiendra le fichier">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></TextField>
+      <TreeView fx:id="treeArborescence" layoutX="14.0" layoutY="207.0" prefHeight="252.0" prefWidth="573.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0" />
+      <Label layoutX="14.0" layoutY="118.0" prefHeight="17.0" prefWidth="228.0" text="Entrez ou sélectionnez le dossier parent :" />
+      <Button fx:id="btnRacine" layoutX="14.0" layoutY="182.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0" text="⧋" AnchorPane.leftAnchor="14.0">
+         <tooltip>
+            <Tooltip text="Retourner à la racine">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></Button>
+      <Button fx:id="btnPrecedent" layoutX="48.0" layoutY="182.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="🢠" AnchorPane.leftAnchor="48.0">
+         <tooltip>
+            <Tooltip text="Aller au parent">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></Button>
+      <Button fx:id="btnSuivant" layoutX="82.0" layoutY="182.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="🢡" AnchorPane.leftAnchor="82.0">
+         <tooltip>
+            <Tooltip text="Aller dans le sous-dossier">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></Button>
+      <TextField fx:id="txtNomFichier" layoutX="109.0" layoutY="488.0" prefHeight="25.0" prefWidth="478.0" AnchorPane.leftAnchor="109.0" AnchorPane.rightAnchor="13.0">
+         <tooltip>
+            <Tooltip text="Le nom complet du fichier qui sera créé (avec extension le cas échéant)">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></TextField>
+      <Label layoutX="14.0" layoutY="492.0" text="Nom du fichier :" AnchorPane.leftAnchor="14.0" />
+      <Button fx:id="btnCreer" onAction="#createFile" disable="false" defaultButton="true" layoutX="410.0" layoutY="629.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="81.0" text="Créer" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="109.0" />
+      <Button fx:id="btnAnnuler" onAction="#cancel" cancelButton="true" layoutX="506.0" layoutY="629.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="81.0" text="Annuler" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="13.0" />
+   </children>
+</AnchorPane>

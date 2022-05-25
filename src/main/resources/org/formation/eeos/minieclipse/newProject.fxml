@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane fx:id="fenetreNouvProjet" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.formation.eeos.minieclipse.view.CreationProjetController">
+   <children>
+      <Separator layoutY="98.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Créer un projet" wrappingWidth="174.97265625" AnchorPane.bottomAnchor="505.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="262.0" AnchorPane.topAnchor="27.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="14.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Crée un projet MiniEclipse prêt à être développé" />
+      <TextField fx:id="txtNom" layoutX="104.0" layoutY="127.0" minHeight="30.0" minWidth="300.0" AnchorPane.leftAnchor="104.0" AnchorPane.rightAnchor="14.0">
+         <tooltip>
+            <Tooltip text="Le nom qui sera donné au projet ainsi qu'à son dossier principal">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></TextField>
+      <Text layoutX="14.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom du projet : " AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="371.54296875" />
+      <GridPane layoutX="11.0" layoutY="191.0" minHeight="62.0" minWidth="429.0" prefHeight="105.0" prefWidth="578.0" style="-fx-border-radius: 5; -fx-border-color: lightgrey;" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="ALWAYS" maxWidth="376.0" minWidth="10.0" prefWidth="376.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="178.0" minWidth="10.0" prefWidth="150.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="16.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="94.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="txtDossierParent" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="275.0" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+               <tooltip>
+                  <Tooltip text="Le chemin du dossier parent dans lequel sera créé le projet">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Tooltip>
+               </tooltip>
+            </TextField>
+            <Button fx:id="btnParcourir" minHeight="32.0" minWidth="136.0" mnemonicParsing="false" onAction="#parcourirDossier" text="Parcourir..." GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+               <tooltip>
+                  <Tooltip text="Choisir un dossier dans l'explorateur...">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Tooltip>
+               </tooltip>
+            </Button>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dossier parent : " wrappingWidth="90.23828125">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin></Text>
+         </children>
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+      </GridPane>
+      <Label alignment="CENTER" layoutX="21.0" layoutY="178.0" prefHeight="27.0" prefWidth="121.0" style="-fx-background-color: white;" text="Localisation du projet" textAlignment="CENTER">
+         <padding>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </padding>
+         <tooltip>
+            <Tooltip text="Détermine l'endroit où sera situé le projet">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip>
+      </Label>
+      <GridPane layoutX="11.0" layoutY="340.0" minHeight="62.0" minWidth="429.0" prefHeight="105.0" prefWidth="578.0" style="-fx-border-radius: 5; -fx-border-color: lightgrey;" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+         <children>
+            <RadioButton fx:id="radioMemeDossier" mnemonicParsing="false" selected="true" text="Utiliser le dossier du projet comme racine des sources et classes compilées">
+               <toggleGroup>
+                  <ToggleGroup fx:id="projectLayout" />
+               </toggleGroup>
+               <tooltip>
+                  <Tooltip text="Les fichiers source (.java) et les classes compilées (.class) seront disposées ensemble dans le dossier racine">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Tooltip>
+               </tooltip>
+            </RadioButton>
+            <RadioButton fx:id="radioSepare" mnemonicParsing="false" text="Créer des dossiers séparés pour les sources et les classes compilées" toggleGroup="$projectLayout" GridPane.rowIndex="1">
+               <tooltip>
+                  <Tooltip text="Des dossiers séparés seront créés dans le dossier du projet : l'un pour les sources (.java), l'autre pour les classes compilées (.class)">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Tooltip>
+               </tooltip></RadioButton>
+         </children>
+      </GridPane>
+      <Label alignment="CENTER" layoutX="21.0" layoutY="327.0" prefHeight="27.0" prefWidth="130.0" style="-fx-background-color: white;" text="Organisation du projet" textAlignment="CENTER">
+         <padding>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </padding>
+      </Label>
+      <Separator layoutX="6.0" layoutY="722.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Button fx:id="btnCreer" defaultButton="true" layoutX="407.0" layoutY="744.0" mnemonicParsing="false" onAction="#addProject" prefHeight="17.0" prefWidth="81.0" text="Créer" AnchorPane.bottomAnchor="31.0" AnchorPane.rightAnchor="109.0">
+         <tooltip>
+            <Tooltip text="Créer le projet">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip>
+      </Button>
+      <Button fx:id="btnAnnuler" cancelButton="true" layoutX="496.0" layoutY="744.0" mnemonicParsing="false" onAction="#closeAndCancel" prefHeight="17.0" prefWidth="81.0" text="Annuler" AnchorPane.bottomAnchor="31.0" AnchorPane.rightAnchor="14.0">
+         <tooltip>
+            <Tooltip text="Annuler la création du projet">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></Button>
+   </children>
+</AnchorPane>
