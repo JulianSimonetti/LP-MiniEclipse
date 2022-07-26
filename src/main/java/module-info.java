@@ -1,4 +1,4 @@
-module org.seraphfive.minieclipse {
+module org.formation.eeos.minieclipse {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
